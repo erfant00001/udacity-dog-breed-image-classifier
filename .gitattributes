@@ -1,0 +1,6 @@
+# Track large / binary assets with Git LFS.
+# Run `git lfs install` once, then `git add` the files normally.
+*.zip  filter=lfs diff=lfs merge=lfs -text
+*.jpg  filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.png  filter=lfs diff=lfs merge=lfs -text
