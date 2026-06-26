@@ -8,13 +8,7 @@ A command-line application that uses **pre-trained Convolutional Neural Networks
 
 ## Overview
 
-The program classifies a folder of pet images with a chosen pre-trained CNN, then compares the predicted labels against the true labels embedded in each image filename. It reports, for each model architecture:
-
-- whether the image **is a dog** (and whether the classifier agreed),
-- whether the **specific breed** was matched, and
-- summary statistics (percent correct dogs, breeds, and non-dogs).
-
-The goal is to determine which of the three architectures provides the best classification performance — trading off accuracy against runtime.
+The program classifies a folder of pet images with a chosen pre-trained CNN, then compares the predicted labels against the true labels embedded in each image filename. For each architecture it reports whether the image **is a dog**, whether the **specific breed** matched, and summary statistics — so you can decide which model performs best.
 
 ## How it works
 
@@ -29,19 +23,14 @@ The goal is to determine which of the three architectures provides the best clas
 ## Getting started
 
 ```bash
-# 1. Install dependencies
 pip install torch torchvision pillow
 
-# 2. Place your images in a folder (filenames encode the true label, e.g. Golden_retriever_01.jpg)
-
-# 3. Run a single architecture
+# Run a single architecture
 python check_images.py --dir pet_images/ --arch vgg --dogfile dognames.txt
 
-# 4. Or run all three architectures in a batch
+# Or run all three architectures in a batch
 sh run_models_batch.sh
 ```
-
-**Command-line arguments**
 
 | Flag | Default | Description |
 |------|---------|-------------|
@@ -51,37 +40,7 @@ sh run_models_batch.sh
 
 ## Results
 
-All three architectures correctly identified dogs as dogs on the test images; VGG gave the strongest overall breed-classification performance. See `check_images.txt` for the answers to the uploaded-image analysis questions.
-
-## Project structure
-
-```
-.
-├── check_images.py                   # Main program
-├── get_input_args.py                 # Command-line argument parsing
-├── get_pet_labels.py                 # True labels from filenames
-├── classifier.py                     # Pre-trained CNN inference
-├── classify_images.py                # Run + compare predictions
-├── adjust_results4_isadog.py         # Dog / not-a-dog flags
-├── calculates_results_stats.py       # Statistics
-├── print_results.py                  # Results printout
-├── print_functions_for_lab_checks.py # Lab check helpers
-├── test_classifier.py                # Classifier usage demo
-├── run_models_batch*.sh              # Batch runners
-├── dognames.txt                      # Valid dog names
-└── imagenet1000_clsid_to_human.txt   # ImageNet class index → label map
-```
-
-## Note on large / binary files
-
-The `pet_images/` and `uploaded_images/` sample image folders and the original submission `.zip` are **not** included here (binary assets). They can be added later with [Git LFS](https://git-lfs.com/):
-
-```bash
-git lfs install
-git lfs track "*.jpg" "*.png" "*.zip"
-git add .gitattributes <your-images>
-git commit -m "Add image assets via LFS"
-```
+All three architectures correctly identified dogs as dogs on the test images; VGG gave the strongest overall breed-classification performance. See `check_images.txt` for the uploaded-image analysis answers.
 
 ## Acknowledgements
 
@@ -89,7 +48,7 @@ Starter code and project specification provided by **Udacity** as part of the *A
 
 ## ⚠️ Academic integrity
 
-This repository is shared as a personal portfolio and learning reference. If you are currently enrolled in this Nanodegree, please do **not** copy or submit this code as your own — doing so violates the [Udacity Honor Code](https://www.udacity.com/legal/en-us/honor-code). Use it only to learn from, or to compare approaches after completing your own work.
+This repository is shared as a personal portfolio and learning reference. If you are currently enrolled in this Nanodegree, please do **not** copy or submit this code as your own — doing so violates the [Udacity Honor Code](https://www.udacity.com/legal/en-us/honor-code).
 
 ## License
 
